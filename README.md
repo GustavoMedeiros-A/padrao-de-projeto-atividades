@@ -1,5 +1,5 @@
 # GRUPO
 
-**Yuri Arthur**
-**Pedro Paulo Daris**
-**Gustavo Medeiros**
+__**Yuri Arthur**__
+__**Pedro Paulo Daris**__
+__**Gustavo Medeiros**__
