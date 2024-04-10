@@ -11,12 +11,19 @@ public class ReportProxy implements IReport {
         this.id = id;
     }
 
+    private void lazyReportLoader() {
+        if (report == null) {
+            report = Database.getContent(id);
+            if (report == null) {
+                throw new IllegalStateException("Report with ID " + id + " not found.");
+            }
+        }
+    }
+
     @Override
     public List<String> getReport() {
-        if (this.report == null) {
-            this.report = new Report(this.id);
-        }
-        return this.report.getReport();
+        lazyReportLoader();
+        return report.getReport();
     }
 
     @Override
@@ -24,9 +31,7 @@ public class ReportProxy implements IReport {
         if (!user.hasAccessRights()) {
             throw new IllegalArgumentException("User not authorized");
         }
-        if (this.report == null) {
-            this.report = new Report(this.id);
-        }
-        return this.report.viewContent(user);
+        lazyReportLoader();
+        return report.viewContent(user);
     }
 }
