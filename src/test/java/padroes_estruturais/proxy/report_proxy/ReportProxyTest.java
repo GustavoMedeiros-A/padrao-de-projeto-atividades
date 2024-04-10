@@ -32,6 +32,18 @@ public class ReportProxyTest {
     }
 
     @Test
+    void shouldGetReportAndNotFound() {
+        ReportProxy proxy = new ReportProxy(3);
+        try {
+            proxy.getReport();
+            fail();
+        } catch (IllegalStateException e) {
+            assertEquals("Report with ID 3 not found.", e.getMessage());
+        }
+        ;
+    }
+
+    @Test
     void shouldNotReturnContent() {
         try {
             var user = new User("Bruno", false);
@@ -41,7 +53,6 @@ public class ReportProxyTest {
         } catch (IllegalArgumentException e) {
             assertEquals("User not authorized", e.getMessage());
         }
-
     }
 
 }

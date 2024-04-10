@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Database {
-    private static Map<Integer, Report> movies = new HashMap<>();
+    private static Map<Integer, Report> reports = new HashMap<>();
 
     public static Report getContent(Integer id) {
-        return movies.get(id);
+        return reports.get(id);
     }
 
     public static void addReport(Report report) {
-        movies.put(report.getId(), report);
+        reports.put(report.getId(), report);
     }
 
 }
